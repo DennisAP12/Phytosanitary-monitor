@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# backend data and local model
+/backend/storage/*.db
+/backend/storage/images/*
+!/backend/storage/images/.gitkeep
+/backend/models/*.pt

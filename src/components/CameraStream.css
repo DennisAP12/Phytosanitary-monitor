@@ -1,0 +1,499 @@
+.camera-stream-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Selector de fuente */
+.source-selector {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+}
+
+.selector-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.selector-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.source-btn {
+  flex: 1;
+  min-width: 150px;
+  padding: 0.875rem 1.5rem;
+  border: 2px solid #d1d5db;
+  background: white;
+  color: #374151;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.source-btn:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.source-btn.active {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border-color: #2563eb;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+/* Tarjeta de guía cuando la cámara está desconectada (amigable, sin URLs) */
+.camera-offline-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: white;
+  background: radial-gradient(circle at center, #1f2937 0%, #111827 100%);
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.offline-icon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+  animation: pulse 2s infinite;
+}
+
+.camera-offline-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #f3f4f6;
+}
+
+.camera-offline-card p {
+  margin: 0 0 1.25rem 0;
+  color: #9ca3af;
+  font-size: 0.95rem;
+  max-width: 420px;
+}
+
+.wifi-info-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  color: #60a5fa;
+  backdrop-filter: blur(4px);
+}
+
+.wifi-info-box strong {
+  color: #e5e7eb;
+}
+
+.retry-btn {
+  padding: 0.7rem 1.5rem;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.retry-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.status-badge {
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.status-connected {
+  background-color: #10b981;
+}
+
+.status-connecting {
+  background-color: #f59e0b;
+}
+
+.status-error {
+  background-color: #ef4444;
+}
+
+.stream-image.hidden {
+  display: none !important;
+}
+
+.stream-image.visible {
+  display: block !important;
+}
+
+/* Sección del Stream */
+.stream-section {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 1rem;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* Indicador de estado */
+.status-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.status-indicator:hover {
+  transform: scale(1.2);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Wrapper del Stream */
+.stream-wrapper {
+  position: relative;
+  width: 100%;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stream-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #1f2937;
+}
+
+/* Mensaje de error */
+.error-message {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(239, 68, 68, 0.95);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0 0 8px 8px;
+}
+
+/* Botón de captura */
+.capture-button {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.capture-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.6);
+}
+
+.capture-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.capture-button:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Galería de imágenes */
+.gallery-section {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+}
+
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 1rem;
+}
+
+.gallery-header h3 {
+  margin: 0;
+  color: #1f2937;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.clear-btn {
+  padding: 0.5rem 1rem;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clear-btn:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+}
+
+/* Grid de galería */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  background: #f3f4f6;
+}
+
+.gallery-info {
+  padding: 0.75rem;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+}
+
+.source-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: #dbeafe;
+  color: #1e40af;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.timestamp {
+  display: block;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.gallery-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.download-btn,
+.delete-btn {
+  padding: 0.4rem 0.6rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.download-btn {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.download-btn:hover {
+  background: #bfdbfe;
+  transform: scale(1.1);
+}
+
+.delete-btn {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.delete-btn:hover {
+  background: #fecaca;
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .camera-stream-container {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .stream-section,
+  .gallery-section,
+  .source-selector {
+    padding: 1rem;
+  }
+
+  .header h2 {
+    font-size: 1.25rem;
+  }
+
+  .capture-button {
+    padding: 0.875rem;
+    font-size: 0.9rem;
+  }
+
+  .stream-wrapper {
+    aspect-ratio: 4 / 3;
+  }
+
+  .selector-buttons {
+    gap: 0.75rem;
+  }
+
+  .source-btn {
+    min-width: 120px;
+    padding: 0.75rem 1rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+
+  .gallery-image {
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .camera-stream-container {
+    padding: 0.75rem;
+  }
+
+  .stream-section,
+  .gallery-section,
+  .source-selector {
+    padding: 0.75rem;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .capture-button {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .selector-buttons {
+    flex-direction: column;
+  }
+
+  .source-btn {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .gallery-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .clear-btn {
+    width: 100%;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .gallery-image {
+    height: 100px;
+  }
+}
+

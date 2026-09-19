@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Monitor Fitosanitario",
+  "name": "Monitor de Problemas Fitosanitarios",
   "icons": [
     {
       "src": "favicon.ico",
