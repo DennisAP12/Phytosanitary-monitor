@@ -1,67 +1,60 @@
-# Sistema de Diagnóstico Fitosanitario del Jitomate
+# 🍅 Phytosanitary Monitor
 
-Sistema web para el análisis visual de anomalias en cultivos de tomate mediante inteligencia artificial y visión por computadora.
+### Sistema de Diagnóstico Fitosanitario del jitomate
 
-La aplicación permite capturar imágenes  de tomate, enviarlas a un servicio de procesamiento y visualizar los resultados obtenidos mediante un modelo de detección basado en YOLO.
+Sistema de análisis visual automatizado para la identificación de anomalias en cultivos de jitomate mediante **inteligencia artificial, visión por computadora y captura de imágenes**.
 
----
-
-## Descripción
-
-El proyecto tiene como objetivo apoyar la identificación visual de anomalías en frutos de tomate mediante un sistema de análisis automatizado.
-
-La aplicación está compuesta por un frontend desarrollado con React y un backend desarrollado con Python y Flask. El backend recibe las imágenes, ejecuta el modelo de inteligencia artificial y almacena los resultados del análisis.
-
-El sistema también incorpora una base de datos SQLite para conservar el historial de análisis y un sistema de almacenamiento de imágenes.
+El proyecto integra una interfaz web desarrollada con **React**, un sistema de análisis mediante un modelo entrenado y almacenamiento de resultados mediante **SQLite**. La captura de imágenes puede realizarse de forma experimental, mediante una cámara **ESP32-CAM**.
 
 ---
 
-## Características
+## 📋 Descripción
 
-- Análisis de imágenes de hojas de tomate mediante inteligencia artificial.
-- Detección de enfermedades mediante un modelo YOLO.
-- Captura de imágenes desde una cámara compatible.
-- Soporte para cámara del teléfono o webcam.
-- Integración experimental con ESP32-CAM.
-- Visualización de la imagen original y de la imagen procesada.
-- Visualización de las detecciones realizadas por el modelo.
-- Historial de análisis.
-- Almacenamiento de imágenes y resultados.
-- Descarga de imágenes procesadas.
-- Interfaz responsiva para diferentes dispositivos.
-- API REST para la comunicación entre frontend y backend.
+Phytosanitary Monitor es una aplicación orientada al monitoreo visual de cultivos de jitomate.
+
+El sistema permite capturar imágenes del jitomate, enviarlas al sistema de análisis y visualizar los resultados obtenidos. Además, cuenta con un historial de análisis y almacenamiento de las imágenes procesadas.
+
+El proyecto busca facilitar la identificación de posibles enfermedades en los frutos del jitomate mediante herramientas de inteligencia artificial y visión por computadora.
 
 ---
 
-## Tecnologías utilizadas
+## ✨ Características
+
+
+- 📡 Soporte para transmisión mediante ESP32-CAM.
+- 🤖 Análisis de imágenes mediante inteligencia artificial.
+- 🔎 Identificación visual de anomalias.
+- 🖼️ Visualización de imágenes originales y procesadas.
+- 📥 Descarga de imágenes capturadas.
+- 🗂️ Historial de análisis realizados.
+- 💾 Almacenamiento de resultados mediante SQLite.
+- 📱 Interfaz responsiva para computadora, tablet y dispositivos móviles.
+
+---
+
+## 🛠️ Tecnologías utilizadas
 
 ### Frontend
-
 - React
 - JavaScript
 - HTML5
 - CSS3
 
-### Backend
-
+### Backend y análisis
 - Python
-- Flask
-- Flask-CORS
-
-### Inteligencia artificial y procesamiento de imágenes
-
+- Modelo de inteligencia artificial
 - YOLO
-- Ultralytics
 - OpenCV
 - NumPy
-- Pillow
 
 ### Base de datos
-
 - SQLite
 
-### Herramientas
+### Hardware
+- FreeNove ESP32-CAM
+- OV2640
 
+### Herramientas
 - Git
 - GitHub
 - Visual Studio Code
@@ -69,154 +62,312 @@ El sistema también incorpora una base de datos SQLite para conservar el histori
 
 ---
 
-## Arquitectura del sistema
-
-El sistema está dividido en tres componentes principales:
+## 🏗️ Arquitectura del sistema
 
 ```text
-┌─────────────────────────────┐
-│          FRONTEND           │
-│            React            │
-│                             │
-│  Cámara / selección imagen  │
-│  Interfaz de usuario        │
-│  Historial                  │
-└──────────────┬──────────────┘
-               │
-               │ HTTP / REST API
-               ▼
-┌─────────────────────────────┐
-│          BACKEND            │
-│        Python + Flask       │
-│                             │
-│  Recepción de imágenes      │
-│  Procesamiento              │
-│  Modelo YOLO                │
-│  Gestión de resultados      │
-└──────────────┬──────────────┘
-               │
-       ┌───────┴────────┐
-       ▼                ▼
-┌──────────────┐  ┌──────────────┐
-│    YOLO      │  │   SQLite     │
-│   best.pt    │  │  Historial   │
-└──────────────┘  └──────────────┘
+             📷 ESP32-CAM 
+                         │
+                         ▼
+                  🌐 Interfaz React
+                         │
+                         ▼
+                   🔌 API Backend
+                         │
+                         ▼
+                  🤖 Modelo YOLO
+                         │
+              ┌──────────┴──────────┐
+              ▼                     ▼
+      🖼️ Imagen procesada      📊 Resultados
+                                    │
+                                    ▼
+                              🗄️ SQLite
+```
+---
 
+# 🚀 Instalación
 
-<<<<<<< HEAD <<<<<<< HEAD # Phytosanitary-monitor AI-powered tomato crop health monitoring system using computer vision, YOLO, and camera-based analytics for precision agriculture. ======= # Getting Started with Create React App ======= # Sistema de Diagnóstico Fitosanitario del Tomate >>>>>>> 3317378 (Initial commit) Sistema de análisis visual automatizado para la identificación de enfermedades foliares en cultivos de tomate, desarrollado con **FreeNove ESP32-CAM** y **React**. ## Características - **Stream en vivo MJPEG** desde ESP32-CAM - **Captura de imágenes** de alta calidad - **Análisis con inteligencia artificial** (requiere backend) - **Descarga de imágenes** capturadas - **Historial de análisis** completo - **Interfaz responsiva** (móvil, tablet, desktop) - **Soporte para webcam** como alternativa ## Requisitos - **ESP32-CAM FreeNove** (con módulo OV2640) - **Node.js** 14+ instalado - **WiFi** en tu red local - Navegador moderno (Chrome, Firefox, Edge, Safari) ## Configuración inicial del ESP32-CAM ### 1. Código Arduino para el ESP32 Flash el siguiente código al ESP32-CAM usando Arduino IDE:
-cpp
-#include "esp_camera.h"
-#include <WiFi.h>
-#include <esp_http_server.h>
+## 📌 Requisitos
 
-// Configuración de pines para OV2640
-#define PWDN_GPIO_NUM     32
-#define RESET_GPIO_NUM    -1
-#define XCLK_GPIO_NUM      0
-#define SIOD_GPIO_NUM     26
-#define SIOC_GPIO_NUM     27
-#define Y9_GPIO_NUM       35
-#define Y8_GPIO_NUM       34
-#define Y7_GPIO_NUM       39
-#define Y6_GPIO_NUM       36
-#define Y5_GPIO_NUM       21
-#define Y4_GPIO_NUM       19
-#define Y3_GPIO_NUM       18
-#define Y2_GPIO_NUM        5
-#define VSYNC_GPIO_NUM    25
-#define HREF_GPIO_NUM     23
-#define PCLK_GPIO_NUM     22
+Antes de ejecutar el proyecto se requiere:
 
-// Tu WiFi
-const char* ssid = "TU_RED_WIFI";
-const char* password = "TU_CONTRASEÑA";
+- Node.js 14 o superior
+- Python 3.10 o superior
+- Navegador moderno
+- Conexión WiFi local
+- FreeNove ESP32-CAM con módulo OV2640 
+- Modelo entrenado `best.pt`
 
-void startCameraServer();
+---
 
-void setup() {
-  Serial.begin(115200);
-  Serial.setDebugOutput(true);
-  Serial.println();
+## 💻 Configuración del Frontend
 
-  // Configurar cámara
-  camera_config_t config;
-  config.ledc_channel = LEDC_CHANNEL_0;
-  config.ledc_freq_hz = 20000000;
-  config.pin_d0 = Y2_GPIO_NUM;
-  config.pin_d1 = Y3_GPIO_NUM;
-  config.pin_d2 = Y4_GPIO_NUM;
-  config.pin_d3 = Y5_GPIO_NUM;
-  config.pin_d4 = Y6_GPIO_NUM;
-  config.pin_d5 = Y7_GPIO_NUM;
-  config.pin_d6 = Y8_GPIO_NUM;
-  config.pin_d7 = Y9_GPIO_NUM;
-  config.pin_xclk = XCLK_GPIO_NUM;
-  config.pin_pclk = PCLK_GPIO_NUM;
-  config.pin_vsync = VSYNC_GPIO_NUM;
-  config.pin_href = HREF_GPIO_NUM;
-  config.pin_sccb_sda = SIOD_GPIO_NUM;
-  config.pin_sccb_scl = SIOC_GPIO_NUM;
-  config.pin_pwdn = PWDN_GPIO_NUM;
-  config.pin_reset = RESET_GPIO_NUM;
-  config.xclk_freq_hz = 20000000;
-  config.pixel_format = PIXFORMAT_JPEG;
-  config.jpeg_quality = 10;
-  config.fb_count = 2;
+Desde la carpeta principal del proyecto:
 
-  esp_err_t err = esp_camera_init(&config);
-  if (err != ESP_OK) {
-    Serial.printf("Camera init failed with error 0x%x", err);
-    return;
-  }
-
-  // WiFi
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.print("Camera Ready! Use 'http://");
-  Serial.print(WiFi.localIP());
-  Serial.println(":81/stream' to connect");
-
-  startCameraServer();
-}
-
-void loop() {
-  delay(10000);
-}
-### 2. Obtener la IP del ESP32 Después de flashear, abre el Monitor Serial (9600 baud) y busca:
-Camera Ready! Use 'http://192.168.X.XXX:81/stream' to connect
-## Cómo usar la aplicación ### 1. Instalar dependencias
-bash
+```bash
 cd deteccion-foliar
 npm install
-### 2. Iniciar la aplicación
-bash
+```
+
+Después ejecuta:
+
+```bash
 npm start
-Se abrirá en http://localhost:3000 ### 3. Conectar el ESP32-CAM - Selecciona **"ESP32-CAM"** en la interfaz - Ingresa la URL: http://192.168.4.1:81/stream (o tu IP local) - Verás el indicador cambiar a **EN VIVO** ### 4. Capturar imágenes - Haz clic en **"Capturar y analizar"** - Las imágenes se guardarán en el historial - Haz clic en **"Descargar"** para descargar ## Backend, red neuronal y base de datos El backend de este proyecto está en backend/. La base de datos es SQLite y se crea automáticamente en backend/storage/detecciones.db. Las imágenes se guardan como archivos JPEG en backend/storage/images/; la base solo conserva sus nombres, fecha y detecciones. Esta separación evita que la base de datos crezca innecesariamente. ### 1. Instalar Python y dependencias Instala Python 3.10 o superior y verifica que python funcione en una terminal:
-bash
-python --version
+```
+
+La aplicación estará disponible en:
+
+```text
+http://localhost:3000
+```
+
+---
+
+# 🤖 Configuración del Backend
+
+El backend se encuentra dentro de la carpeta:
+
+```text
+backend/
+```
+
+Instala las dependencias:
+
+```bash
 cd backend
 python -m pip install -r requirements.txt
-### 2. Copiar el modelo entrenado Copia el archivo best.pt del profesor en:
-text
+```
+
+Verifica la instalación de Python:
+
+```bash
+python --version
+```
+
+---
+
+## 🧠 Modelo de inteligencia artificial
+
+El modelo entrenado debe colocarse en:
+
+```text
 backend/models/best.pt
-### 3. Iniciar el backend Desde la carpeta backend/:
-bash
+```
+
+El archivo `best.pt` es utilizado por el backend para realizar el análisis de las imágenes recibidas.
+
+---
+
+## ▶️ Iniciar el Backend
+
+Desde la carpeta `backend/`:
+
+```bash
 python app.py
-Comprueba que responde visitando http://localhost:5000/health. Debe indicar "status": "ok" y "modelPresent": true. El endpoint POST /analyze recibe la imagen capturada por React, ejecuta best.pt, guarda la imagen original, la imagen con detecciones y los resultados en SQLite. El endpoint GET /analyses devuelve el historial guardado y /media/<archivo> sirve las imágenes almacenadas. ### Orden recomendado de trabajo 1. Ejecutar el backend y comprobar /health. 2. Copiar best.pt y probar una captura real con /analyze. 3. Confirmar que aparecen archivos en backend/storage/images/ y que se crea backend/storage/detecciones.db. 4. Después conectar la pantalla de historial de React con GET /analyses. La aplicación React ya envía las capturas a http://localhost:5000/analyze. ## Uso en teléfono - Si el ESP32 y tu teléfono están en la **misma WiFi**, simplemente ingresa la IP del ESP32 - Puedes usar la cámara del teléfono también (selecciona "Teléfono / Webcam") ## Solución de problemas | Problema | Solución | |----------|----------| | "No se pudo conectar al ESP32" | Verifica que el ESP32 esté en la misma WiFi y que la IP sea correcta | | Stream lentitud | Reduce la calidad JPEG en el ESP32 (aumenta jpeg_quality a 15-20) | | Errores CORS | Asegúrate que el ESP32 está respondiendo a solicitudes HTTP | | No funciona la cámara del teléfono | Acepte permisos de cámara en el navegador | ## Estructura del proyecto
-deteccion-foliar/
-├── public/
-│   └── index.html
-├── src/
-│   ├── App.jsx              # Componente principal
-│   ├── App.css              # Estilos
-│   ├── components/
-│   │   └── CameraStream.jsx # Streaming de cámara
-│   └── index.js
-├── package.json
-└── README.md
-## Características de la interfaz - **Streaming en tiempo real** desde ESP32-CAM - **Indicador de conexión** (En vivo / Desconectado) - **Galería de imágenes capturadas** con timestamp - **Descarga de imágenes** en formato JPEG - **Historial completo** de análisis realizados - **Interfaz responsiva** para todos los dispositivos --- **Sistema para análisis visual de enfermedades del tomate** This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting) ### Analyzing the Bundle Size This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size) ### Making a Progressive Web App This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app) ### Advanced Configuration This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration) ### Deployment This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment) ### npm run build fails to minify This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) >>>>>>> 7903a68 (Initialize project using Create React App) que cosas me recomindas dejar de mi readme
+```
+
+Para comprobar que el backend está funcionando, visita:
+
+```text
+http://localhost:5000/health
+```
+
+La respuesta esperada debe indicar:
+
+```json
+{
+  "status": "ok",
+  "modelPresent": true
+}
+```
+
+---
+
+# 🔌 API
+
+El sistema cuenta con los siguientes endpoints principales:
+
+### `GET /health`
+
+Comprueba el estado del backend y la disponibilidad del modelo.
+
+### `POST /analyze`
+
+Recibe una imagen desde la aplicación React y ejecuta el análisis mediante el modelo entrenado.
+
+El proceso incluye:
+
+- recepción de la imagen;
+- procesamiento mediante el modelo;
+- generación de la imagen con detecciones;
+- almacenamiento de los resultados.
+
+### `GET /analyses`
+
+Obtiene el historial de análisis realizados.
+
+### `GET /media/<archivo>`
+
+Permite acceder a las imágenes almacenadas.
+
+---
+
+# 💾 Almacenamiento
+
+Los resultados se almacenan dentro de:
+
+```text
+backend/storage/
+```
+
+La base de datos se encuentra en:
+
+```text
+backend/storage/detecciones.db
+```
+
+Las imágenes se almacenan en:
+
+```text
+backend/storage/images/
+```
+
+La base de datos conserva información como:
+
+- nombre de los archivos;
+- fecha del análisis;
+- detecciones obtenidas.
+
+Las imágenes se almacenan como archivos independientes para evitar que la base de datos aumente innecesariamente de tamaño.
+
+---
+
+# 📷 Fuentes de captura
+
+### ESP32-CAM
+
+Permite utilizar una transmisión MJPEG proveniente de la cámara.
+
+La dirección del stream tiene el siguiente formato:
+
+```text
+http://IP_DEL_ESP32:81/stream
+```
+
+Por ejemplo:
+
+```text
+http://192.168.4.1:81/stream
+```
+---
+
+# ⚙️ Configuración del ESP32-CAM
+
+Para utilizar el ESP32-CAM:
+
+1. Configurar el dispositivo mediante Arduino IDE.
+2. Cargar el programa correspondiente al ESP32-CAM.
+3. Conectarlo a la red WiFi.
+4. Obtener la dirección IP asignada.
+5. Introducir la dirección del stream en la aplicación.
+6. Verificar que el indicador de conexión muestre **EN VIVO**.
+
+
+---
+
+# 📁 Estructura del proyecto
+
+```text
+Phytosanitary-monitor/
+│
+├── deteccion-foliar/
+│   ├── public/
+│   │   └── index.html
+│   │
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── index.js
+│   │   │
+│   │   └── components/
+│   │       └── CameraStream.jsx
+│   │
+│   ├── package.json
+│   └── README.md
+│
+└── backend/
+    ├── models/
+    │   └── best.pt
+    │
+    ├── storage/
+    │   ├── detecciones.db
+    │   └── images/
+    │
+    ├── requirements.txt
+    └── app.py
+```
+---
+
+# 🔄 Orden recomendado para ejecutar el proyecto
+
+Para utilizar el sistema correctamente:
+
+### 1. Iniciar el backend
+
+```bash
+cd backend
+python app.py
+```
+
+### 2. Comprobar el estado del backend
+
+Abrir:
+
+```text
+http://localhost:5000/health
+```
+
+### 3. Verificar el modelo
+
+Confirmar que exista:
+
+```text
+backend/models/best.pt
+```
+
+### 4. Iniciar React
+
+```bash
+cd deteccion-foliar
+npm start
+```
+
+### 5. Abrir la aplicación
+
+```text
+http://localhost:3000
+```
+### 6. Capturar y analizar
+
+La imagen se envía al backend para su procesamiento y posteriormente se muestran los resultados en la interfaz.
+
+---
+
+# 🛠️ Solución de problemas
+
+| Problema | Posible solución |
+|---|---|
+| No se conecta el ESP32-CAM | Verificar que el dispositivo esté conectado a la misma red WiFi y que la IP sea correcta. |
+| El stream es lento | Ajustar la calidad JPEG configurada en el ESP32-CAM. |
+| El backend no responde | Verificar que `python app.py` se encuentre ejecutándose. |
+| El modelo no aparece | Confirmar que `best.pt` se encuentre en `backend/models/`. |
+| No funciona la cámara del teléfono | Revisar los permisos de cámara del navegador. |
+| No aparecen los análisis | Comprobar la conexión con el backend y el endpoint `/analyze`. |
+
+---
+
+<p align="center">
+  🍅 Phytosanitary Monitor
+  <br>
+  Sistema de monitoreo y análisis de anomalias en los jitomates
+</p>
