@@ -1,14 +1,14 @@
-# Sistema de Diagnóstico Fitosanitario del Tomate
+# Sistema de Diagnóstico Fitosanitario del Jitomate
 
-Sistema web para el análisis visual de enfermedades foliares en cultivos de tomate mediante inteligencia artificial y visión por computadora.
+Sistema web para el análisis visual de anomalias en cultivos de tomate mediante inteligencia artificial y visión por computadora.
 
-La aplicación permite capturar o seleccionar imágenes de hojas de tomate, enviarlas a un servicio de procesamiento y visualizar los resultados obtenidos mediante un modelo de detección basado en YOLO.
+La aplicación permite capturar imágenes  de tomate, enviarlas a un servicio de procesamiento y visualizar los resultados obtenidos mediante un modelo de detección basado en YOLO.
 
 ---
 
 ## Descripción
 
-El proyecto tiene como objetivo apoyar la identificación visual de enfermedades en hojas de tomate mediante un sistema de análisis automatizado.
+El proyecto tiene como objetivo apoyar la identificación visual de anomalías en frutos de tomate mediante un sistema de análisis automatizado.
 
 La aplicación está compuesta por un frontend desarrollado con React y un backend desarrollado con Python y Flask. El backend recibe las imágenes, ejecuta el modelo de inteligencia artificial y almacena los resultados del análisis.
 
